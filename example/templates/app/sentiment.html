@@ -5,4 +5,33 @@
 
 {% block content %}
     This is <em>Yeyang</em> for <strong>Algorithm Design and Analysis</strong>.
+    <form action="./sentiment.html" method="post" class="form" name="sentiment-analysis">
+        {% csrf_token %}
+
+{#        {% bootstrap_form form layout=layout size=size type='text' name='q'%}#}
+        <label>
+            <input type="text" name="q">
+        </label>
+        {% bootstrap_button button_type="submit" content="Start Analyse!" %}
+        <p>
+            Score of Sentiment Analysis is: <b>{{ score }}</b>
+        </p>
+        <p>
+            Positive Words: <b>{{ positive }}</b>
+        </p>
+        <p>
+            Negative Words: <b>{{ negative }}</b>
+        </p>
+        <p>
+            Stop Words: <b>{{ stop }}</b>
+        </p>
+        <p>
+            Neutral Words: <b>{{ neutral }}</b>
+        </p>
+
+        <p>{{ rlt }}</p>
+
+{#        {% bootstrap_button button_type="reset" content="Cancel" %}#}
+    </form>
 {% endblock %}
+

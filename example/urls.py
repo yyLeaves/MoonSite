@@ -1,4 +1,5 @@
 from django.urls import path
+from sentiment import analyse
 
 from app.views import (
     DefaultFormByFieldView,
@@ -23,5 +24,6 @@ urlpatterns = [
     path("form_with_files", FormWithFilesView.as_view(), name="form_with_files"),
     path("pagination", PaginationView.as_view(), name="pagination"),
     path("misc", MiscView.as_view(), name="misc"),
-    path("sentiment", SentimentAnalysis.as_view(), name='sentiment')
+    path("sentiment", SentimentAnalysis.as_view(), name='sentiment'),
+    path(r'sentiment.html', analyse)
 ]

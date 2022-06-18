@@ -13,6 +13,13 @@ MEDIA_CHOICES = (
 )
 
 
+class SentimentForm(forms.Form):
+    message = forms.CharField(required=True,
+                              help_text="<i>Please paste your article here</i>",
+                              widget=forms.Textarea,
+                              )
+
+
 class TestForm(forms.Form):
     """Form with a variety of widgets to test django_bootstrap5 rendering."""
 

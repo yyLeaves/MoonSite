@@ -5,7 +5,7 @@ from django.db.models.fields.files import FieldFile
 from django.views.generic import FormView
 from django.views.generic.base import TemplateView
 
-from .forms import ContactForm, ContactFormSet, FilesForm
+from .forms import ContactForm, ContactFormSet, FilesForm, SentimentForm
 
 
 # http://yuji.wordpress.com/2013/01/30/django-form-field-in-initial-data-requires-a-fieldfile-instance/
@@ -21,7 +21,7 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        messages.info(self.request, "hello http://example.com")
+        messages.info(self.request, "Hello Coffee Lovers! Hello WIA2005!")
         return context
 
 
@@ -93,7 +93,11 @@ class MiscView(TemplateView):
 
 class SentimentAnalysis(GetParametersMixin, FormView):
     template_name = "app/sentiment.html"
-    form_class = ContactForm
+    form_class = SentimentForm
+
+
+
+
 
 
 # class SentimentAnalysis(TemplateView):
