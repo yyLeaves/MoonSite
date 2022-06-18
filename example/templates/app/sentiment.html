@@ -4,15 +4,17 @@
 {% block title %}Sentiment Analysis{% endblock %}
 
 {% block content %}
-    This is <em>Yeyang</em> for <strong>Algorithm Design and Analysis</strong>.
+    <div class="mb-3">
+        This is <em>Yeyang</em> for <strong>Algorithm Design and Analysis</strong>
+    </div>
     <form action="./sentiment.html" method="post" class="form" name="sentiment-analysis">
-        {% csrf_token %}
+    {% csrf_token %}
+    <div class="mb-3">
+        <textarea class="form-control" placeholder="Paste your article here!" id="floatingTextarea2" style="height: 300px" name="q"></textarea>
+{#        <label for="floatingTextarea2"></label>#}
+    </div>
+        <div class="mb-3"><p>{% bootstrap_button button_type="submit" content="Start Analyse!" %}</p></div>
 
-{#        {% bootstrap_form form layout=layout size=size type='text' name='q'%}#}
-        <label>
-            <input type="text" name="q">
-        </label>
-        {% bootstrap_button button_type="submit" content="Start Analyse!" %}
         <p>
             Score of Sentiment Analysis is: <b>{{ score }}</b>
         </p>
@@ -31,7 +33,7 @@
 
         <p>{{ rlt }}</p>
 
-{#        {% bootstrap_button button_type="reset" content="Cancel" %}#}
+
     </form>
 {% endblock %}
 
