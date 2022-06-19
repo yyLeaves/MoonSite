@@ -1,10 +1,9 @@
 from Trie import *
-from graph import Graph
+from graph import graph
 from articles import articles
 from moon_utils import pick_country
 
 if __name__ == '__main__':
-
     # pick country
     top5 = pick_country(5)
     print(f"Top 5 countries with most stores are {', '.join(top5)}\n")
@@ -16,8 +15,6 @@ if __name__ == '__main__':
 
     # sentiment analysis by words
     for country in articles.keys():
-        data_list = []
-
         article_arr = trie_utils().preprocess(articles[country])
 
         # If want other stats about words, run the below,
@@ -34,6 +31,5 @@ if __name__ == '__main__':
         print(
             f"{country} has {sentiment[0]} neutral words, {sentiment[-1]} negative words, {sentiment[1]} positive words, {sentiment[11]} stop words")
         print(f"{country} has a score of {score}")
-    # graph = Graph()
-    # graph.graph_maker()
-    # graph.score_ranker()
+    # to draw the graphs, use:
+    # graph(data_list)
