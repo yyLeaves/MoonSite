@@ -1,6 +1,6 @@
 from django.urls import path
 from sentiment import analyse
-
+import country
 from app.views import (
     DefaultFormByFieldView,
     DefaultFormsetView,
@@ -11,7 +11,8 @@ from app.views import (
     HomePageView,
     MiscView,
     PaginationView,
-    SentimentAnalysis
+    SentimentAnalysis,
+    CountryView
 )
 
 urlpatterns = [
@@ -25,5 +26,7 @@ urlpatterns = [
     path("pagination", PaginationView.as_view(), name="pagination"),
     path("misc", MiscView.as_view(), name="misc"),
     path("sentiment", SentimentAnalysis.as_view(), name='sentiment'),
-    path(r'sentiment.html', analyse)
+    path(r'sentiment.html', analyse),
+    path("country", CountryView.as_view(), name='country'),
+    path(r'pick-country.html', country.pick_countries),
 ]

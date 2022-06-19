@@ -1,0 +1,47 @@
+{% extends 'app/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Countries{% endblock %}
+
+{% block content %}
+    <h2>Pick top n countries</h2>
+    <div class="mb-3">
+        This is <em>Yeyang</em> for <strong>Algorithm Design and Analysis</strong>
+    </div>
+    <form action="./pick-country.html" method="post" class="form" name="pick">
+    {% csrf_token %}
+    <div class="mb-3">
+          <div class="form-group">
+{#    <label for="exampleFormControlSelect1">Example select</label>#}
+              Get top
+    <select class="form-group mb-2" id="exampleFormControlSelect1" name="country">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+    </select>
+              countries/regions with most MoonBuck cafe
+  </div>
+        <div class="mb-3"><p>{% bootstrap_button button_type="submit" content="Get!" %}</p></div>
+    </div>
+        <div>Top {{ n }} Countries/Regions are</div>
+        <div>
+            <ol>
+            {% for c in countries %}
+                <li>{{ c }}</li>
+            {% empty %}
+                <li>No counties.</li>
+            {% endfor %}
+            </ol>
+        </div>
+
+
+    </form>
+{% endblock %}
+

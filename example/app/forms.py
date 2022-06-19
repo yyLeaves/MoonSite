@@ -20,6 +20,13 @@ class SentimentForm(forms.Form):
                               )
 
 
+class CountryForm(forms.Form):
+    message = forms.CharField(required=True,
+                              help_text="<i>Please paste your number here</i>",
+                              widget=forms.Textarea,
+                              )
+
+
 class TestForm(forms.Form):
     """Form with a variety of widgets to test django_bootstrap5 rendering."""
 
