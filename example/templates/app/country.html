@@ -40,8 +40,47 @@
             {% endfor %}
             </ol>
         </div>
-
-
     </form>
+
+    <div>
+        <h2>Top 5 countries and their economics</h2>
+    </div>
+
+    <div>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-us" type="button" role="tab" aria-controls="pills-us" aria-selected="true">US</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-ca" type="button" role="tab" aria-controls="pills-ca" aria-selected="false">CA</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-jp" type="button" role="tab" aria-controls="pills-jp" aria-selected="false">JP</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-cn" type="button" role="tab" aria-controls="pills-cn" aria-selected="false">CN</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-gb" type="button" role="tab" aria-controls="pills-gb" aria-selected="false">GB</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-us" role="tabpanel" aria-labelledby="pills-us-tab">
+          US 
+      </div>
+      <div class="tab-pane fade" id="pills-ca" role="tabpanel" aria-labelledby="pills-ca-tab">
+          CA
+      </div>
+      <div class="tab-pane fade" id="pills-jp" role="tabpanel" aria-labelledby="pills-jp-tab">
+          JP
+      </div>
+      <div class="tab-pane fade" id="pills-cn" role="tabpanel" aria-labelledby="pills-cn-tab">
+          CA
+      </div>
+      <div class="tab-pane fade" id="pills-gb" role="tabpanel" aria-labelledby="pills-gb-tab">
+          GB
+      </div>
+    </div>
+    </div>
 {% endblock %}
 
