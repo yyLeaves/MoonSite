@@ -5,7 +5,7 @@ from django.db.models.fields.files import FieldFile
 from django.views.generic import FormView
 from django.views.generic.base import TemplateView
 
-from .forms import ContactForm, ContactFormSet, FilesForm, SentimentForm, CountryForm
+from .forms import ContactForm, ContactFormSet, FilesForm, SentimentForm, CountryForm, PickCountryForm
 
 
 # http://yuji.wordpress.com/2013/01/30/django-form-field-in-initial-data-requires-a-fieldfile-instance/
@@ -98,3 +98,7 @@ class SentimentAnalysis(GetParametersMixin, FormView):
 class CountryView(GetParametersMixin, FormView):
     template_name = "app/country.html"
     form_class = CountryForm
+
+class PickCountryView(GetParametersMixin, FormView):
+    template_name = "app/pick-country.html"
+    form_class = PickCountryForm

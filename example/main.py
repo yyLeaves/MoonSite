@@ -32,6 +32,6 @@ if __name__ == '__main__':
             f"{country} has {sentiment[0]} neutral words, {sentiment[-1]} negative words, {sentiment[1]} positive words, {sentiment[11]} stop words")
         print(f"{country} has a score of {score}")
     # to draw the graphs, use:
-    # graph.bar_graph(data_list)
-    # graph.score_graph(data_list)
+    graph.bar_graph(data_list)
+    graph.score_graph(data_list)
 

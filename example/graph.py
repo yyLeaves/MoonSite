@@ -29,7 +29,7 @@ def bar_graph(country_detail):
         title="Words Sentiment Analysis"
     )
     fig = pg.Figure(data=trace, layout=layout)
-    fig.write_html("Bar.html")
+    fig.write_html("graphs/Bar.html")
 
 
 def score_graph(country_detail):
@@ -49,4 +49,4 @@ def score_graph(country_detail):
         title="Score Rank"
     )
     fig = pg.Figure(data=score_rank, layout=layout)
-    fig.write_html("Rank.html")
+    fig.write_html("graphs/Rank.html")

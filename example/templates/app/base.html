@@ -6,12 +6,28 @@
     <div class="container">
         <h1>{% block title %}(no title){% endblock %}</h1>
 
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'sentiment' %}">sentiment</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'country' %}">country</a></li>
-
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="https://github.com/yyLeaves/algo-assignment/">MoonBucks</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sentiment' %}">Sentiment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'country' %}">Country</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pick-country' %}">Pick Country</a>
+          </li>
         </ul>
+      </div>
+    </nav>
 
         {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
 
@@ -19,32 +35,4 @@
     </div>
 
 {% endblock %}
-
-{#{% extends 'app/bootstrap.html' %}#}
-{##}
-{#{% load django_bootstrap5 %}#}
-{##}
-{#{% block bootstrap5_content %}#}
-{#    <div class="container">#}
-{#        <h1>{% block title %}(no title){% endblock %}</h1>#}
-{##}
-{#        <ul class="nav nav-pills">#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">home</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'formset_default' %}">formset</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'form_default' %}">form</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'sentiment' %}">sentiment</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'form_by_field' %}">form_by_field</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'form_horizontal' %}">form_horizontal</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'form_inline' %}">form_inline</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'form_with_files' %}">form_with_files</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'pagination' %}">pagination</a></li>#}
-{#            <li class="nav-item"><a class="nav-link" href="{% url 'misc' %}">miscellaneous</a></li>#}
-{#        </ul>#}
-{##}
-{#        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}#}
-{##}
-{#        {% block content %}(no content){% endblock %}#}
-{#    </div>#}
-{##}
-{#{% endblock %}#}
 
