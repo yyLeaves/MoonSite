@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="db" uuid="01a87a9c-4367-416e-ae22-82acc822f691">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:F:\UM OneDrive\OneDrive - 365.um.edu.my\UM\TDWK\小组项目\25 Group Project\MoonSite\example\db.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>
