@@ -12,7 +12,8 @@ from app.views import (
     PaginationView,
     SentimentAnalysis,
     CountryView,
-    PickCountryView
+    PickCountryView,
+    ArticleView
 )
 
 urlpatterns = [
@@ -32,4 +33,6 @@ urlpatterns = [
     path(r"country.html", sentiment.analyse_countries),
     path(r'pick-country', PickCountryView.as_view(), name='pick-country'),
     path(r'pick-country.html', country.pick_countries),
+    path(r'article', ArticleView.as_view(), name='article'),
+    path(r'article.html', ArticleView.as_view(), name='article'),
 ]
