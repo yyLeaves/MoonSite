@@ -1,6 +1,7 @@
 from Trie import *
 from moon_utils import *
 import graph
+from cfg import *
 # 表单
 def search_form(request):
     return render(request, './app/sentiment.html')
@@ -43,12 +44,15 @@ def analyse_countries(request):
             score = trie_utils().get_score(sentiment)
 
             data_list.append([country, sentiment[0], sentiment[-1], sentiment[1], sentiment[11], score])
-            # ctx[country] = f"{country} has {sentiment[0]} neutral words, {sentiment[-1]} negative words, {sentiment[1]} positive words, {sentiment[11]} stop words\n"+ "{country} has a score of {score}")
-            # res.append("
-            # print(
-            #     f"{country} has {sentiment[0]} neutral words, {sentiment[-1]} negative words, {sentiment[1]} positive words, {sentiment[11]} stop words")
-            # print(f"{country} has a score of {score}")
-        # to draw the graphs, use:
-        graph.bar_graph(data_list)
-        graph.score_graph(data_list)
-        return render(request, "app/sentiment.html", ctx)
+            ctx[f"{country}Score"] = f"{score:.05f}"
+            ctx[f"{country}Pos"] = sentiment[1]
+            ctx[f"{country}Neg"] = sentiment[-1]
+            ctx[f"{country}Neutral"] = sentiment[0]
+            ctx[f"{country}Stop"] = sentiment[11]
+            print(f"{country}Score")
+
+        graph.bar_graph(data_list, bar_graph_path)
+        graph.score_graph(data_list, rank_graph_path)
+
+        ctx["bar"] = "graphs/Bar.html"
+        return render(request, "app/country.html", ctx)

@@ -5,7 +5,7 @@ from django.db.models.fields.files import FieldFile
 from django.views.generic import FormView
 from django.views.generic.base import TemplateView
 
-from .forms import ContactForm, ContactFormSet, FilesForm, SentimentForm, CountryForm, PickCountryForm, ArticleForm
+from .forms import ContactForm, ContactFormSet, FilesForm, SentimentForm, CountryForm, PickCountryForm, ArticleForm, GraphForm
 
 
 # http://yuji.wordpress.com/2013/01/30/django-form-field-in-initial-data-requires-a-fieldfile-instance/
@@ -106,3 +106,7 @@ class PickCountryView(GetParametersMixin, FormView):
 class ArticleView(GetParametersMixin, FormView):
     template_name = "app/article.html"
     form_class = ArticleForm
+
+class BarGraphView(GetParametersMixin, FormView):
+    template_name = "app/Bar.html"
+    form_class = GraphForm

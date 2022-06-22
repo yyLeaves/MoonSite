@@ -19,65 +19,98 @@
         </div>
             <div class="mb-3">
                 <p class="mb-3">
-                    {% bootstrap_button button_type="submit" content="Sentiment Analysis for top 5 countries" %}
-                    <a href="#" class="btn btn-outline-primary" role="button">Bar</a>
-                    <a href="#" class="btn btn-outline-primary" role="button">Score</a>
+                    {% bootstrap_button button_type="submit" button_class="btn-success" content="Sentiment Analysis for top 5 countries" %}
+{#                    <a href="#" class="btn btn-outline-primary" role="button">Bar</a>#}
+{#                    <a href="#" class="btn btn-outline-primary" role="button">Score</a>#}
                 </p>
             </div>
-{#            <div>#}
-{#            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">#}
-{#          <li class="nav-item" role="presentation">#}
-{#            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-us" type="button" role="tab" aria-controls="pills-us" aria-selected="true">#}
-{#                US#}
-{#            </button>#}
-{#          </li>#}
-{#          <li class="nav-item" role="presentation">#}
-{#            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-ca" type="button" role="tab" aria-controls="pills-ca" aria-selected="false">CA</button>#}
-{#          </li>#}
-{#          <li class="nav-item" role="presentation">#}
-{#            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-jp" type="button" role="tab" aria-controls="pills-jp" aria-selected="false">JP</button>#}
-{#          </li>#}
-{#          <li class="nav-item" role="presentation">#}
-{#            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-cn" type="button" role="tab" aria-controls="pills-cn" aria-selected="false">CN</button>#}
-{#          </li>#}
-{#          <li class="nav-item" role="presentation">#}
-{#            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-gb" type="button" role="tab" aria-controls="pills-gb" aria-selected="false">GB</button>#}
-{#          </li>#}
-{#        </ul>#}
-{#        <div class="tab-content" id="pills-tabContent">#}
-{#          <div class="tab-pane fade show active" id="pills-us" role="tabpanel" aria-labelledby="pills-us-tab">#}
-{#              US#}
-{##}
-{#                <p>#}
-{#                    {{ usRes }}#}
-{#                </p>#}
-{#          </div>#}
-{#          <div class="tab-pane fade" id="pills-ca" role="tabpanel" aria-labelledby="pills-ca-tab">#}
-{#              CA#}
-{#                <p>#}
-{#                    {{ caRes }}#}
-{#                </p>#}
-{#          </div>#}
-{#          <div class="tab-pane fade" id="pills-jp" role="tabpanel" aria-labelledby="pills-jp-tab">#}
-{#              JP#}
-{#                <p>#}
-{#                    {{ jpRes }}#}
-{#                </p>#}
-{#          </div>#}
-{#          <div class="tab-pane fade" id="pills-cn" role="tabpanel" aria-labelledby="pills-cn-tab">#}
-{#              CN#}
-{#                <p>#}
-{#                    {{ cnRes }}#}
-{#                </p>#}
-{#          </div>#}
-{#          <div class="tab-pane fade" id="pills-gb" role="tabpanel" aria-labelledby="pills-gb-tab">#}
-{#              GB#}
-{#                <p>#}
-{#                    {{ gbRes }}#}
-{#                </p>#}
-{#          </div>#}
-{#        </div>#}
-{#        </div>#}
+        <div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#res" type="button" role="tab" aria-controls="home" aria-selected="true">Result</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#bar" type="button" role="tab" aria-controls="profile" aria-selected="false">Bar Graph</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#rank" type="button" role="tab" aria-controls="contact" aria-selected="false">Rank Graph</button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="res" role="tabpanel" aria-labelledby="home-tab">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Country</th>
+                          <th scope="col">Sentiment Score</th>
+                          <th scope="col">Positive Words</th>
+                          <th scope="col">Negtive Words</th>
+                          <th scope="col">Neutral Words</th>
+                          <th scope="col">Stop Words</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">US</th>
+                          <td>{{ USScore }}</td>
+                          <td>{{ USPos }}</td>
+                          <td>{{ USNeg }}</td>
+                          <td>{{ USNeutral }}</td>
+                          <td>{{ USStop }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">CA</th>
+                          <td>{{ CAScore }}</td>
+                          <td>{{ CAPos }}</td>
+                          <td>{{ CANeg }}</td>
+                          <td>{{ CANeutral }}</td>
+                          <td>{{ CAStop }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">JP</th>
+                          <td>{{ JPScore }}</td>
+                          <td>{{ JPPos }}</td>
+                          <td>{{ JPNeg }}</td>
+                          <td>{{ JPNeutral }}</td>
+                          <td>{{ JPStop }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">CN</th>
+                          <td>{{ CNScore }}</td>
+                          <td>{{ CNPos }}</td>
+                          <td>{{ CNNeg }}</td>
+                          <td>{{ CNNeutral }}</td>
+                          <td>{{ CNStop }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">GB</th>
+                          <td>{{ GBScore }}</td>
+                          <td>{{ GBPos }}</td>
+                          <td>{{ GBNeg }}</td>
+                          <td>{{ GBNeutral }}</td>
+                          <td>{{ GBStop }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="tab-pane fade" id="bar" role="tabpanel" aria-labelledby="profile-tab">
+                      <div>
+                            {% if graph %}
+                            <div style="width:100%">
+                            {{ bar|safe }}
+                            </div>
+                            {% endif %}
+
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="rank" role="tabpanel" aria-labelledby="contact-tab">
+                      <div>
+                          <iframe id="igraph" style="border:none;" seamless="seamless" src="https://chart-studio.plotly.com/~chris/1638/#/" height="525" width="100%"></iframe>
+                      </div>
+                  </div>
+                </div>
+        </div>
+
     </form>
 
 

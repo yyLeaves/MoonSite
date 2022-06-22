@@ -13,7 +13,8 @@ from app.views import (
     SentimentAnalysis,
     CountryView,
     PickCountryView,
-    ArticleView
+    ArticleView,
+    BarGraphView
 )
 
 urlpatterns = [
@@ -35,4 +36,5 @@ urlpatterns = [
     path(r'pick-country.html', country.pick_countries),
     path(r'article', ArticleView.as_view(), name='article'),
     path(r'article.html', ArticleView.as_view(), name='article'),
+    path(r'Bar.html', BarGraphView.as_view())
 ]
