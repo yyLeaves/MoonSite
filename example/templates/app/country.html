@@ -25,17 +25,20 @@
                 </p>
             </div>
         <div>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#res" type="button" role="tab" aria-controls="home" aria-selected="true">Result</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#bar" type="button" role="tab" aria-controls="profile" aria-selected="false">Bar Graph</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#rank" type="button" role="tab" aria-controls="contact" aria-selected="false">Rank Graph</button>
-                  </li>
-                </ul>
+
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Result</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link text-success" href="Bar.html">Bar Graph</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-success" href="Rank.html">Score Graph</a>
+          </li>
+        </ul>
                 <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="res" role="tabpanel" aria-labelledby="home-tab">
                     <table class="table">
@@ -93,21 +96,7 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="tab-pane fade" id="bar" role="tabpanel" aria-labelledby="profile-tab">
-                      <div>
-                            {% if graph %}
-                            <div style="width:100%">
-                            {{ bar|safe }}
-                            </div>
-                            {% endif %}
 
-                      </div>
-                  </div>
-                  <div class="tab-pane fade" id="rank" role="tabpanel" aria-labelledby="contact-tab">
-                      <div>
-                          <iframe id="igraph" style="border:none;" seamless="seamless" src="https://chart-studio.plotly.com/~chris/1638/#/" height="525" width="100%"></iframe>
-                      </div>
-                  </div>
                 </div>
         </div>
 

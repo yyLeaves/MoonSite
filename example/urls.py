@@ -1,5 +1,5 @@
 from django.urls import path
-import country, sentiment
+import country, sentiment, delivery
 from app.views import (
     DefaultFormByFieldView,
     DefaultFormsetView,
@@ -14,19 +14,13 @@ from app.views import (
     CountryView,
     PickCountryView,
     ArticleView,
-    BarGraphView
+    BarGraphView,
+    RankGraphView,
+    DeliveryView
 )
 
 urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
-    # path("formset", DefaultFormsetView.as_view(), name="formset_default"),
-    # path("form", DefaultFormView.as_view(), name="form_default"),
-    # path("form_by_field", DefaultFormByFieldView.as_view(), name="form_by_field"),
-    # path("form_horizontal", FormHorizontalView.as_view(), name="form_horizontal"),
-    # path("form_inline", FormInlineView.as_view(), name="form_inline"),
-    # path("form_with_files", FormWithFilesView.as_view(), name="form_with_files"),
-    # path("pagination", PaginationView.as_view(), name="pagination"),
-    # path("misc", MiscView.as_view(), name="misc"),
     path("sentiment", SentimentAnalysis.as_view(), name='sentiment'),
     path(r'sentiment.html', sentiment.analyse),
     path(r'country-sentiment.html', sentiment.analyse),
@@ -36,5 +30,8 @@ urlpatterns = [
     path(r'pick-country.html', country.pick_countries),
     path(r'article', ArticleView.as_view(), name='article'),
     path(r'article.html', ArticleView.as_view(), name='article'),
-    path(r'Bar.html', BarGraphView.as_view())
+    path(r'Bar.html', BarGraphView.as_view()),
+    path(r'Rank.html', RankGraphView.as_view()),
+    path(r'delivery', DeliveryView.as_view(), name='delivery'),
+    path(r'delivery.html', delivery.calc)
 ]

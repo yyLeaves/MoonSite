@@ -7,14 +7,14 @@
         <h1><img src="https://imgpp.com/s1/2022/06/23/moonbucks_logo.png" alt="moonbucks_logo.png" border="0" width="10%"/> {% block title %}(no title){% endblock %}</h1>
 
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="https://github.com/yyLeaves/algo-assignment/">MoonBucks</a>
+      <a class="navbar-brand text-success" href="https://github.com/yyLeaves/algo-assignment/">MoonBucks</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">Home </a>
+            <a class="nav-link " href="{% url 'home' %}">Home </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'sentiment' %}">Sentiment</a>
@@ -27,6 +27,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'article' %}">Article</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'delivery' %}">Delivery</a>
           </li>
         </ul>
       </div>

@@ -38,8 +38,14 @@ class ArticleForm(forms.Form):
                               widget=forms.Textarea,
                               )
 class GraphForm(forms.Form):
-    class ArticleForm(forms.Form):
-        message = forms.CharField(required=True,
+    # class ArticleForm(forms.Form):
+    message = forms.CharField(required=True,
+                                  help_text="<i>Please paste your number here</i>",
+                                  widget=forms.Textarea,
+                                  )
+
+class DeliveryForm(forms.Form):
+    message = forms.CharField(required=True,
                                   help_text="<i>Please paste your number here</i>",
                                   widget=forms.Textarea,
                                   )

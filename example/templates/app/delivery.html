@@ -1,0 +1,120 @@
+{% extends 'app/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Delivery{% endblock %}
+
+{% block content %}
+    <div class="mb-3">
+        This is <em>Yeyang</em> for <strong>Algorithm Design and Analysis</strong>
+    </div>
+    <form action="./delivery.html" method="post" class="form" name="calc">
+    {% csrf_token %}
+    <div class="mb-3">
+          <div class="form-group">
+              <div class="mb-3">
+                      <label for="country">Select a country</label>
+                    <select class="form-control" id="country" name="c">
+                      <option>US</option>
+                      <option>CA</option>
+                      <option>JP</option>
+                      <option>CN</option>
+                      <option>GB</option>
+                    </select>
+              </div>
+              <div class="mb-3">
+                      <label for="store">Select store numbers</label>
+                    <select class="form-control" id="store" name="s">
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                      <option>15</option>
+                      <option>16</option>
+                      <option>17</option>
+                    </select>
+              </div>
+          <div class="mb-3"><p>{% bootstrap_button button_type="submit" button_class="btn-success" content="Calculate!" %}</p></div>
+
+
+<div class="mb-3">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active btn-success text-success" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Coordinates</button>
+        <button class="nav-link btn-success text-success" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Store Center</button>
+        <button class="nav-link btn-success text-success"  id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Shortest Path</button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="res" role="tabpanel" aria-labelledby="home-tab">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">No.</th>
+                          <th scope="col">Latitude</th>
+                          <th scope="col">Longitude</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+            {% for co in coords %}
+                        <tr>
+                          <td>{{ co.0 }}</td>
+                          <td>{{ co.1 }}</td>
+                          <td>{{ co.2 }}</td>
+                        </tr>
+            {% endfor %}
+
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+      </div>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+    </div>
+</div>
+
+{#            <div class="tab-content" id="myTabContent">#}
+{#                  <div class="tab-pane fade show active" id="res" role="tabpanel" aria-labelledby="home-tab">#}
+{#                    <table class="table">#}
+{#                      <thead>#}
+{#                        <tr>#}
+{#                          <th scope="col">Latitude</th>#}
+{#                          <th scope="col">Longitude</th>#}
+{#                        </tr>#}
+{#                      </thead>#}
+{#                      <tbody>#}
+{##}
+{#            {% for co in coords %}#}
+{#                        <tr>#}
+{#                          <td>{{ co.0 }}</td>#}
+{#                          <td>{{ co[0] }}</td>#}
+{#                          <td>{{ co.1 }}</td>#}
+{#                        </tr>#}
+{#            {% endfor %}#}
+{##}
+{##}
+{#                      </tbody>#}
+{#                    </table>#}
+{#                  </div>#}
+{##}
+{#                </div>#}
+
+          </div>
+    </div>
+    </form>
+
+{% endblock %}
+

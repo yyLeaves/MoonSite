@@ -9,6 +9,17 @@ def pick_country(n):
     topn = list(count_dict)[:n]
     return topn
 
+def random_sample(country, n):
+    df = pd.read_csv(csv_path)
+    df = df[df['state']==country]
+    df = df[['latitude', 'longitude']]
+    stores = df.sample(n)
+    stores_dict = stores.to_dict()
+    lat = stores_dict['latitude']
+    lon = stores_dict['longitude']
+    x = [lat[e] for e in lat]
+    y = [lon[e] for e in lon]
+    return [[x[i], y[i]] for i in range(n)]
 
 if __name__ == '__main__':
     # US, CA, JP, CN, GB

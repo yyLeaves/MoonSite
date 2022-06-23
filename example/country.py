@@ -1,12 +1,11 @@
 from Trie import *
 from moon_utils import pick_country
 import pycountry
+from django.shortcuts import render
+
 
 def search_form(request):
     return render(request, './app/sentiment.html')
-
-
-from django.shortcuts import render
 
 
 # get post

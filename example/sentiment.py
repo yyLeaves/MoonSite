@@ -2,7 +2,7 @@ from Trie import *
 from moon_utils import *
 import graph
 from cfg import *
-# 表单
+
 def search_form(request):
     return render(request, './app/sentiment.html')
 
@@ -51,8 +51,7 @@ def analyse_countries(request):
             ctx[f"{country}Stop"] = sentiment[11]
             print(f"{country}Score")
 
-        graph.bar_graph(data_list, bar_graph_path)
-        graph.score_graph(data_list, rank_graph_path)
+        graph.bar_graph(data_list)
+        graph.score_graph(data_list)
 
-        ctx["bar"] = "graphs/Bar.html"
         return render(request, "app/country.html", ctx)
