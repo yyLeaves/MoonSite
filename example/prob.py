@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 from django.shortcuts import render
-
+import base64
+from io import BytesIO
 def shellSort(A, n):
     # set the initial gap to floor of n/2
     gap = n // 2
@@ -71,7 +72,7 @@ def get_prob(request):
             total_cost += cost
 
         for i in range(n):
-            p = scores[i] / total_score * (1-(costs[i]) / total_cost)
+            p = scores[i] / total_score * (1 - (costs[i]) / total_cost)
             probability.append(p)
             ctx[f"p{i + 1}"] =f"{p:.5f}"
 
@@ -87,11 +88,34 @@ def get_prob(request):
         for i in range(n):
             ctx[f"r{i + 1}"] = sorted_sequence_of_country[i] + 1
 
-        # plotPie(countries, probability)
+        print(probability)
+        print(scores)
+        print(costs)
+        print(probability)
+        print(countries)
+
+        plotPie(countries, probability)
 
     return render(request, "app/prob.html", ctx)
 
-def plotPie(labels, y):
-    plt.pie(y, labels=labels, explode=[0, 0.2, 0, 0, 0], shadow=True, autopct=lambda p: '{:.2f}%'.format(p), startangle = 180)
+def plotPie(countries, probability):
+    prob_sum = 0
+    for p in probability:
+        prob_sum += p
+    probability = [p /prob_sum for p in probability]
+    fig = plt.figure()
+    plt.pie(probability, labels=countries, explode=[0, 0, 0.2, 0, 0], shadow=True, autopct=lambda p: '{:.2f}%'.format(p), startangle = 180)
     plt.title("Probability of Selecting Country to Expand Business")
-    plt.show()
+    plt.legend()
+    plt.savefig("pchart.png")
+
+    # save image to html
+
+    tmpfile = BytesIO()
+    fig.savefig(tmpfile, format='png')
+    encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
+
+    html = '<img src=\'data:image/png;base64,{}\'>'.format(encoded)
+
+    with open('templates/app/pchart.html', 'w') as f:
+        f.write(html)

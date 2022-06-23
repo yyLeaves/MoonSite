@@ -6,7 +6,7 @@ from django.views.generic import FormView
 from django.views.generic.base import TemplateView
 
 from .forms import SentimentForm, CountryForm, PickCountryForm, ArticleForm, \
-    GraphForm, DeliveryForm, SimpleForm, StoreForm, PMapForm, SMapForm, ProbForm
+    GraphForm, DeliveryForm, SimpleForm, StoreForm, PMapForm, SMapForm, ProbForm, PChartForm
 
 
 # http://yuji.wordpress.com/2013/01/30/django-form-field-in-initial-data-requires-a-fieldfile-instance/
@@ -80,3 +80,7 @@ class StoreView(GetParametersMixin, FormView):
 class ProbView(GetParametersMixin, FormView):
     template_name = "app/prob.html"
     form_class = ProbForm
+
+class PChartView(GetParametersMixin, FormView):
+    template_name = "app/pchart.html"
+    form_class = PChartForm

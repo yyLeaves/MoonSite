@@ -13,7 +13,8 @@ from app.views import (
     StoreView,
     PMapView,
     SMapView,
-    ProbView
+    ProbView,
+    PChartView
 )
 
 urlpatterns = [
@@ -37,4 +38,5 @@ urlpatterns = [
     path(r'stores.html', StoreView.as_view(), name='stores'),
     path(r'pmap.html', PMapView.as_view(), name='pmap'),
     path(r'smap.html', SMapView.as_view(), name='smap'),
+    path(r'pchart.html', PChartView.as_view(), name='pchart'),
 ]

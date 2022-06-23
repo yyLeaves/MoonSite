@@ -73,9 +73,15 @@ class SMapForm(forms.Form):
                                   widget=forms.Textarea,
                                   )
 
+
 class ProbForm(forms.Form):
     message = forms.CharField(required=True,
                                   help_text="<i>Please paste your number here</i>",
                                   widget=forms.Textarea,
                                   )
 
+class PChartForm(forms.Form):
+    message = forms.CharField(required=True,
+                                  help_text="<i>Please paste your number here</i>",
+                                  widget=forms.Textarea,
+                                  )

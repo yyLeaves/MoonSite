@@ -74,7 +74,6 @@ def calc(request):
             lists.pop(lists.index(start))
             m = S.transfer(lists)
             next_node = S.array[start][m]
-            # print(start, "--->", next_node)
             res += f"---> {next_node+1}\n"
             store_order.append(stores[start])
             start = next_node
@@ -89,16 +88,12 @@ def calc(request):
             x1.append(store[0])
             y1.append(store[1])
 
-        # x2 = []
-        # y2 = []
-        # x2.append(store_order[-1][0])
+
         x1.append(store_order[0][0])
-        # y2.append(store_order[-1][1])
         y1.append(store_order[0][1])
 
         fig2 = plt.figure()
         plt.plot(y1, x1, label='path', linewidth=2, color='g') # , marker='o'
-        # plt.plot(x2, y2, label='path', linewidth=2, color='g') # , marker='o'
         plt.scatter([center[1]], [center[0]], s=200, color='orange', marker='*')
         plt.ylabel('latitude')
         plt.xlabel('longitude')
@@ -126,7 +121,6 @@ def calc(request):
 
         gmap1.scatter(x2, y2, size=50, color='green')
         gmap1.scatter([center[0]], [center[1]], size=50, color='orange')
-        # gmap2.plot(x1, y1, "cornflowerblue", edge_width=2.5)
         gmap1.draw("templates/app/smap.html")
 
         # draw path map
