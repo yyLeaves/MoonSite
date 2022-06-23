@@ -125,5 +125,5 @@ class SimpleView(GetParametersMixin, FormView):
     form_class = SimpleForm
 
 class StoreView(GetParametersMixin, FormView):
-    template_name = "app/simple.html"
+    template_name = "app/stores.html"
     form_class = StoreForm

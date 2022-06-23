@@ -41,6 +41,15 @@ def calc(request):
         plt.savefig("stores.png")
 
 
+        tmpfile = BytesIO()
+        fig1.savefig(tmpfile, format='png')
+        encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
+
+        html =  '<img src=\'data:image/png;base64,{}\'>'.format(encoded)
+
+        with open('templates/app/stores.html', 'w') as f:
+            f.write(html)
+
         # get distance matrix
         distence_matrix = np.zeros([n, n])
         for i in range(0, n):
