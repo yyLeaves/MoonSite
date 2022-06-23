@@ -36,11 +36,11 @@ def calc(request):
         plt.xlabel('latitude')
         plt.ylabel('longitude')
         print(center)
-        plt.scatter([center[0]], [center[1]])
+        plt.scatter([center[0]], [center[1]], s=200, color='orange', marker='*')
         plt.title('Stores')
         plt.savefig("stores.png")
 
-
+        # write img into html
         tmpfile = BytesIO()
         fig1.savefig(tmpfile, format='png')
         encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
@@ -88,16 +88,17 @@ def calc(request):
             x1.append(store[0])
             y1.append(store[1])
 
-        x2 = []
-        y2 = []
-        x2.append(store_order[-1][0])
-        x2.append(store_order[0][0])
-        y2.append(store_order[-1][1])
-        y2.append(store_order[0][1])
+        # x2 = []
+        # y2 = []
+        # x2.append(store_order[-1][0])
+        x1.append(store_order[0][0])
+        # y2.append(store_order[-1][1])
+        y1.append(store_order[0][1])
 
         fig2 = plt.figure()
-        plt.plot(x1, y1, label='path', linewidth=2, marker='o')
-        plt.plot(x2, y2, label='path', linewidth=2, color='g', marker='o')
+        plt.plot(x1, y1, label='path', linewidth=2, color='g') # , marker='o'
+        # plt.plot(x2, y2, label='path', linewidth=2, color='g') # , marker='o'
+        plt.scatter([center[0]], [center[1]], s=200, color='orange', marker='*')
         plt.xlabel('latitude')
         plt.ylabel('longitude')
         plt.title('TSP path')
