@@ -21,7 +21,7 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        messages.info(self.request, "Hello Coffee Lovers! Hello WIA2005!")
+        messages.success(self.request, "Hello Coffee Lovers! Hello WIA2005!")
         return context
 
 
