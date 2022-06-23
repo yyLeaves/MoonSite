@@ -16,7 +16,9 @@ from app.views import (
     ArticleView,
     BarGraphView,
     RankGraphView,
-    DeliveryView
+    DeliveryView,
+    SimpleView,
+    StoreView
 )
 
 urlpatterns = [
@@ -33,5 +35,7 @@ urlpatterns = [
     path(r'Bar.html', BarGraphView.as_view()),
     path(r'Rank.html', RankGraphView.as_view()),
     path(r'delivery', DeliveryView.as_view(), name='delivery'),
-    path(r'delivery.html', delivery_calc.calc)
+    path(r'delivery.html', delivery_calc.calc),
+    path(r'simple.html', SimpleView.as_view(), name='simple'),
+    path(r'stores.html', StoreView.as_view(), name='stores'),
 ]

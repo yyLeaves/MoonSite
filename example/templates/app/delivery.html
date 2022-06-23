@@ -1,6 +1,6 @@
 {% extends 'app/base.html' %}
 {% load django_bootstrap5 %}
-
+{% load static %}
 {% block title %}Delivery{% endblock %}
 
 {% block content %}
@@ -24,7 +24,6 @@
               <div class="mb-3">
                       <label for="store">Select store numbers</label>
                     <select class="form-control" id="store" name="s">
-                      <option>3</option>
                       <option>4</option>
                       <option>5</option>
                       <option>6</option>
@@ -82,39 +81,34 @@
                 </div>
       </div>
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          {{ center }}
+          <p>
+              The local distribution center should be set at <b>{{ center }}</b>.
+          </p>
+          <p>
+              It has a sum of distance of <b>{{ dist }}</b> km.
+          </p>
+          <p>
+              <a class="btn btn-success" href="stores.html" role="button">View Simple Stores</a>
+          </p>
       </div>
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-          {{ path }}
+          <p>
+              Shortest Path: {{ shortest }} km
+          </p>
+          <p>
+              {{ res }}
+          </p>
+          <p>
+              <a class="btn btn-success" href="simple.html" role="button">View Simple Path</a>
+{#              {% bootstrap_button button_type="submit" button_class="btn-outline-success" content="View Simple Path" %}#}
+
+          </p>
+
+
+      </div>
       </div>
     </div>
 </div>
-
-{#            <div class="tab-content" id="myTabContent">#}
-{#                  <div class="tab-pane fade show active" id="res" role="tabpanel" aria-labelledby="home-tab">#}
-{#                    <table class="table">#}
-{#                      <thead>#}
-{#                        <tr>#}
-{#                          <th scope="col">Latitude</th>#}
-{#                          <th scope="col">Longitude</th>#}
-{#                        </tr>#}
-{#                      </thead>#}
-{#                      <tbody>#}
-{##}
-{#            {% for co in coords %}#}
-{#                        <tr>#}
-{#                          <td>{{ co.0 }}</td>#}
-{#                          <td>{{ co[0] }}</td>#}
-{#                          <td>{{ co.1 }}</td>#}
-{#                        </tr>#}
-{#            {% endfor %}#}
-{##}
-{##}
-{#                      </tbody>#}
-{#                    </table>#}
-{#                  </div>#}
-{##}
-{#                </div>#}
 
           </div>
     </div>
