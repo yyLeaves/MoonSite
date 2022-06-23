@@ -18,7 +18,9 @@ from app.views import (
     RankGraphView,
     DeliveryView,
     SimpleView,
-    StoreView
+    StoreView,
+    PMapView,
+    SMapView
 )
 
 urlpatterns = [
@@ -38,4 +40,6 @@ urlpatterns = [
     path(r'delivery.html', delivery_calc.calc),
     path(r'simple.html', SimpleView.as_view(), name='simple'),
     path(r'stores.html', StoreView.as_view(), name='stores'),
+    path(r'pmap.html', PMapView.as_view(), name='pmap'),
+    path(r'smap.html', SMapView.as_view(), name='smap'),
 ]

@@ -9,6 +9,7 @@ from delivery import *
 import base64
 from io import BytesIO
 from distance import find_shortest
+import gmplot
 
 def calc(request):
     ctx = {}
@@ -32,11 +33,11 @@ def calc(request):
 
         # draw figure
         fig1 = plt.figure()
-        plt.scatter(lat, lon, color='g')
-        plt.xlabel('latitude')
-        plt.ylabel('longitude')
+        plt.scatter(lon, lat, color='g')
+        plt.ylabel('latitude')
+        plt.xlabel('longitude')
         print(center)
-        plt.scatter([center[0]], [center[1]], s=200, color='orange', marker='*')
+        plt.scatter([center[1]], [center[0]], s=200, color='orange', marker='*')
         plt.title('Stores')
         plt.savefig("stores.png")
 
@@ -96,11 +97,11 @@ def calc(request):
         y1.append(store_order[0][1])
 
         fig2 = plt.figure()
-        plt.plot(x1, y1, label='path', linewidth=2, color='g') # , marker='o'
+        plt.plot(y1, x1, label='path', linewidth=2, color='g') # , marker='o'
         # plt.plot(x2, y2, label='path', linewidth=2, color='g') # , marker='o'
-        plt.scatter([center[0]], [center[1]], s=200, color='orange', marker='*')
-        plt.xlabel('latitude')
-        plt.ylabel('longitude')
+        plt.scatter([center[1]], [center[0]], s=200, color='orange', marker='*')
+        plt.ylabel('latitude')
+        plt.xlabel('longitude')
         plt.title('TSP path')
         plt.legend()
         plt.savefig("path.png")
@@ -115,6 +116,28 @@ def calc(request):
 
         with open('templates/app/simple.html', 'w') as f:
             f.write(html)
+
+        # draw store map
+        gmap1 = gmplot.GoogleMapPlotter(center[0],
+                                       center[1],
+                                       5)
+        x2 = [x2 for x2 in x1 if x2!=center[0]]
+        y2 = [y2 for y2 in y1 if y2!=center[1]]
+
+        gmap1.scatter(x2, y2, size=50, color='green')
+        gmap1.scatter([center[0]], [center[1]], size=50, color='orange')
+        # gmap2.plot(x1, y1, "cornflowerblue", edge_width=2.5)
+        gmap1.draw("templates/app/smap.html")
+
+        # draw path map
+        gmap2 = gmplot.GoogleMapPlotter(center[0],
+                                       center[1],
+                                       5)
+
+        gmap2.scatter(x2, y2, size=50)
+        gmap2.scatter([center[0]], [center[1]], size=50, color='orange')
+        gmap2.plot(x1, y1, "cornflowerblue", edge_width=2.5)
+        gmap2.draw("templates/app/pmap.html")
 
 
         return render(request, "app/delivery.html", ctx)

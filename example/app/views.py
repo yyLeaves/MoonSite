@@ -6,7 +6,7 @@ from django.views.generic import FormView
 from django.views.generic.base import TemplateView
 
 from .forms import ContactForm, ContactFormSet, FilesForm, SentimentForm, CountryForm, PickCountryForm, ArticleForm, \
-    GraphForm, DeliveryForm, SimpleForm, StoreForm
+    GraphForm, DeliveryForm, SimpleForm, StoreForm, PMapForm, SMapForm
 
 
 # http://yuji.wordpress.com/2013/01/30/django-form-field-in-initial-data-requires-a-fieldfile-instance/
@@ -66,6 +66,13 @@ class FormWithFilesView(GetParametersMixin, FormView):
     def get_initial(self):
         return {"file4": fieldfile}
 
+class PMapView(GetParametersMixin, FormView):
+    template_name = "app/pmap.html"
+    form_class = PMapForm
+
+class SMapView(GetParametersMixin, FormView):
+    template_name = "app/smap.html"
+    form_class = SMapForm
 
 class PaginationView(TemplateView):
     template_name = "app/pagination.html"

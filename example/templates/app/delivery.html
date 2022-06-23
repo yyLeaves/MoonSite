@@ -82,6 +82,7 @@
       </div>
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
           <p>
+              <div></div>
               The local distribution center should be set at <b>{{ center }}</b>.
           </p>
           <p>
@@ -89,10 +90,12 @@
           </p>
           <p>
               <a class="btn btn-success" href="stores.html" role="button">View Simple Stores</a>
+              <a class="btn btn-success" href="smap.html" role="button" style="margin-left: 10px">View Map Stores</a>
           </p>
       </div>
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
           <p>
+              <div></div>
               Shortest Path: {{ shortest }} km
           </p>
           <p>
@@ -100,8 +103,7 @@
           </p>
           <p>
               <a class="btn btn-success" href="simple.html" role="button">View Simple Path</a>
-{#              {% bootstrap_button button_type="submit" button_class="btn-outline-success" content="View Simple Path" %}#}
-
+              <a class="btn btn-success" href="pmap.html" role="button" style="margin-left: 10px">View Map Path</a>
           </p>
 
 
