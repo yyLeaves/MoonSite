@@ -1,15 +1,7 @@
 from django.urls import path
-import country, sentiment, delivery_calc
+import country, sentiment, delivery_calc, prob
 from app.views import (
-    DefaultFormByFieldView,
-    DefaultFormsetView,
-    DefaultFormView,
-    FormHorizontalView,
-    FormInlineView,
-    FormWithFilesView,
     HomePageView,
-    MiscView,
-    PaginationView,
     SentimentAnalysis,
     CountryView,
     PickCountryView,
@@ -20,7 +12,8 @@ from app.views import (
     SimpleView,
     StoreView,
     PMapView,
-    SMapView
+    SMapView,
+    ProbView
 )
 
 urlpatterns = [
@@ -38,6 +31,8 @@ urlpatterns = [
     path(r'Rank.html', RankGraphView.as_view()),
     path(r'delivery', DeliveryView.as_view(), name='delivery'),
     path(r'delivery.html', delivery_calc.calc),
+    path(r'prob', ProbView.as_view(), name='prob'),
+    path(r'prob.html', prob.get_prob, name='prob'),
     path(r'simple.html', SimpleView.as_view(), name='simple'),
     path(r'stores.html', StoreView.as_view(), name='stores'),
     path(r'pmap.html', PMapView.as_view(), name='pmap'),

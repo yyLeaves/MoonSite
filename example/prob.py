@@ -1,45 +1,5 @@
 from matplotlib import pyplot as plt
-
-#calculate probability
-#japan=13736837
-Countries = ["Country 1","Country 2","Country 3","Country 4","Country 5"]
-sentimentScore = [0.04,0.11,0.08,0.08,0.06]
-TotalScore = 0
-"""
-(in meters)
-C1: 6611507
-C2: 3943375
-C3: 12538639
-C4: 203107
-C5: 3923258"""
-
-Cost = [6611507,3943375,12538639,203107,3923258]
-TotalCost = 0
-Probability = []
-
-for ele in range (0, len(sentimentScore)):
-    TotalScore = TotalScore + sentimentScore[ele]
-
-for ele in range (0, len(Cost)):
-    TotalCost = TotalCost + Cost[ele]
-
-for x in range (0, len(Countries)):
-    Probability.append((sentimentScore[x]/TotalScore) * (1-(Cost[x]/TotalCost)))
-
-print ("Calculated Probability: ")
-
-for x in range (0, len(Countries)):
-    print(Countries[x] + ' = ', round(Probability[x],4))
-
-# getMax method
-def getMax(array_A):
-    max = array_A[0]
-    for i in range(len(array_A)):
-        if array_A[i] > max:
-            max = array_A[i]
-
-    return max
-
+from django.shortcuts import render
 
 def shellSort(A, n):
     # set the initial gap to floor of n/2
@@ -60,33 +20,78 @@ def shellSort(A, n):
             A[j] = temp
         gap //= 2
 
+def getMax(array_A):
+    max = array_A[0]
+    for i in range(len(array_A)):
+        if array_A[i] > max:
+            max = array_A[i]
 
-arr = Probability.copy()
-shellSort(arr, len(arr))
-print('\nSorted Probability: ')
+    return max
 
-for x in range (0, len(arr)):
-    print(x+1,'->', round(arr[x],4))
+def get_prob(request):
+    ctx = {}
+    if request.POST:
+        r_dict = request.POST
+        print(request.POST)
+        countries = [r_dict['n1'],
+                     r_dict['n2'],
+                     r_dict['n3'],
+                     r_dict['n4'],
+                     r_dict['n5'],
+                     ]
 
-Sorted_Sequence_of_Country = []
+        scores = [
+            r_dict['s1'],
+            r_dict['s2'],
+            r_dict['s3'],
+            r_dict['s4'],
+            r_dict['s5'],
+        ]
 
-for x in range(0, len(arr)):
-    for y in range(0, len(Probability)):
-        if arr[x] == Probability[y]:
-            Sorted_Sequence_of_Country.append(y)
+        scores = [float(s) for s in scores]
 
+        costs = [
+            r_dict['c1'],
+            r_dict['c2'],
+            r_dict['c3'],
+            r_dict['c4'],
+            r_dict['c5']
+        ]
 
-print("\nCountries Ranking:")
+        costs = [float(c) for c in costs]
 
-for x in range (0, len(Sorted_Sequence_of_Country)):
-    print(x+1,'->', Countries[Sorted_Sequence_of_Country[x]])
+        n = 5
+        total_score = 0
+        total_cost = 0
+        probability = []
+        for score in scores:
+            total_score += score
 
-#shows data in pie chart
-def plotPie():
-    mylabels = ["C1","C2","C3","C4","C5"]
-    y = [Probability[0],Probability[1],Probability[2],Probability[3],Probability[4]]
-    plt.pie(y, labels=mylabels, explode=[0, 0.2, 0, 0, 0], shadow=True, autopct=lambda p: '{:.2f}%'.format(p), startangle = 180)
+        for cost in costs:
+            total_cost += cost
+
+        for i in range(n):
+            p = scores[i] / total_score * (1-(costs[i]) / total_cost)
+            probability.append(p)
+            ctx[f"p{i + 1}"] =f"{p:.5f}"
+
+        arr = probability.copy()
+        shellSort(arr, n)
+
+        sorted_sequence_of_country = []
+        for x in range(n):
+            for y in range(n):
+                if arr[x] == probability[y]:
+                    sorted_sequence_of_country.append(y)
+
+        for i in range(n):
+            ctx[f"r{i + 1}"] = sorted_sequence_of_country[i] + 1
+
+        # plotPie(countries, probability)
+
+    return render(request, "app/prob.html", ctx)
+
+def plotPie(labels, y):
+    plt.pie(y, labels=labels, explode=[0, 0.2, 0, 0, 0], shadow=True, autopct=lambda p: '{:.2f}%'.format(p), startangle = 180)
     plt.title("Probability of Selecting Country to Expand Business")
     plt.show()
-
-plotPie()
