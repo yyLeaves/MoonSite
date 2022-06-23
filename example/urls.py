@@ -1,5 +1,5 @@
 from django.urls import path
-import country, sentiment, delivery
+import country, sentiment, delivery_calc
 from app.views import (
     DefaultFormByFieldView,
     DefaultFormsetView,
@@ -33,5 +33,5 @@ urlpatterns = [
     path(r'Bar.html', BarGraphView.as_view()),
     path(r'Rank.html', RankGraphView.as_view()),
     path(r'delivery', DeliveryView.as_view(), name='delivery'),
-    path(r'delivery.html', delivery.calc)
+    path(r'delivery.html', delivery_calc.calc)
 ]

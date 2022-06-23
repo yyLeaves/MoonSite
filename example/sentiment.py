@@ -49,7 +49,6 @@ def analyse_countries(request):
             ctx[f"{country}Neg"] = sentiment[-1]
             ctx[f"{country}Neutral"] = sentiment[0]
             ctx[f"{country}Stop"] = sentiment[11]
-            print(f"{country}Score")
 
         graph.bar_graph(data_list)
         graph.score_graph(data_list)
