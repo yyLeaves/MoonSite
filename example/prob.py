@@ -21,13 +21,13 @@ def shellSort(A, n):
             A[j] = temp
         gap //= 2
 
-def getMax(array_A):
-    max = array_A[0]
-    for i in range(len(array_A)):
-        if array_A[i] > max:
-            max = array_A[i]
-
-    return max
+# def getMax(array_A):
+#     max = array_A[0]
+#     for i in range(len(array_A)):
+#         if array_A[i] > max:
+#             max = array_A[i]
+#
+#     return max
 
 def get_prob(request):
     ctx = {}
