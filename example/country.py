@@ -11,6 +11,7 @@ def search_form(request):
 # get post
 def pick_countries(request):
     ctx = {}
+
     if request.POST:
         ctx['rlt'] = request.POST['country']
         number = int(request.POST['country'])
