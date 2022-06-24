@@ -86,7 +86,9 @@ def get_prob(request):
                     sorted_sequence_of_country.append(y)
 
         for i in range(n):
-            ctx[f"r{i + 1}"] = sorted_sequence_of_country[i] + 1
+            ctx[f"r{countries.index(countries[sorted_sequence_of_country[i]])+1}"] = i + 1
+
+        print(ctx)
 
         print(probability)
         print(scores)
